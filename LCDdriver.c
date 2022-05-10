@@ -1,19 +1,14 @@
-#ifndef LCDDRIVER_H_INCLUDED
-#define LCDDRIVER_H_INCLUDED
-
-#include "GPIO.h"
-#include "LCDdriver_CONFIGURATION.h"
-#include "DELAYdriver.h"
+#include "LCDdriver.h"
 
 /********************** LCD Initialization Function **********************/
 
 void LCD_Initialize(void)
 {
-    DIO_SetPortDir(LCD_DATAPORT, 0xFF);                //Set the LCD Data Port Direction as Output
-    DIO_SetPinDir(LCD_CTRLPORT, LCD_RegSelect,1);      //Set the direction of RS Pin of LCD Control Port as Output
-    DIO_SetPinDir(LCD_CTRLPORT, LCD_ReadWrite,1);      //Set the direction of RW Pin of LCD Control Port as Output
-    DIO_SetPinDir(LCD_CTRLPORT, LCD_ENABLE,1);         //Set the direction of EN Pin of LCD Control Port as Output
-    DIO_WritePin(LCD_CTRLPORT, LCD_ENABLE, 0);         //Set the RW Pin LOW to Enable the Write Operation on the LCD
+    SET_PORT_DIRECTION(LCD_DATAPORT, 0xFF);                //Set the LCD Data Port Direction as Output
+    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_RegSelect,1);      //Set the direction of RS Pin of LCD Control Port as Output
+    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ReadWrite,1);      //Set the direction of RW Pin of LCD Control Port as Output
+    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ENABLE,1);         //Set the direction of EN Pin of LCD Control Port as Output
+    WRITE_PIN_VALUE(LCD_CTRLPORT, LCD_ENABLE, 0);         //Set the RW Pin LOW to Enable the Write Operation on the LCD
 
     delay_ms(20);    //LCD Power On Delay
 
@@ -37,11 +32,11 @@ void LCD_Initialize(void)
 
 static void SendCLKPulse(void)
 {
- DIO_WritePin(LCD_CTRLPORT, LCD_ENABLE, 1);     //Set Enable High
+ WRITE_PIN_VALUE(LCD_CTRLPORT, LCD_ENABLE, 1);     //Set Enable High
 
  delay_ms(2);     //Two Milliseconds Delay
 
- DIO_WritePin(LCD_CTRLPORT, LCD_ENABLE, 0);     //Set Enable Low
+ WRITE_PIN_VALUE(LCD_CTRLPORT, LCD_ENABLE, 0);     //Set Enable Low
 
  delay_ms(2);     //Two Milliseconds Delay
 }
@@ -51,9 +46,9 @@ static void SendCLKPulse(void)
 
 void LCD_Command(unsigned char CMD)
 {
-    DIO_WritePort(LCD_DATAPORT, CMD);        //Send the Command needed to the LCD through Data Port
+    WRITE_PORT_VALUE(LCD_DATAPORT, CMD);        //Send the Command needed to the LCD through Data Port
 
-    DIO_WritePin(LCD_CTRLPORT, LCD_RegSelect, 0);   //Set RS Low for sending commands to LCD
+    WRITE_PIN_VALUE(LCD_CTRLPORT, LCD_RegSelect, 0);   //Set RS Low for sending commands to LCD
 
     SendCLKPulse();      //Send Pulse to EN for Activating the LCD
 
@@ -65,9 +60,9 @@ void LCD_Command(unsigned char CMD)
 
 void LCD_Character(unsigned char character)
 {
-    DIO_WritePort(LCD_DATAPORT, character);       //Send the Character needed to the LCD through Data Port
+    WRITE_PORT_VALUE(LCD_DATAPORT, character);         //Send the Character needed to the LCD through Data Port
 
-    DIO_WritePin(LCD_CTRLPORT, LCD_RegSelect, 1);   //Set RS High for sending data to LCD
+    WRITE_PIN_VALUE(LCD_CTRLPORT, LCD_RegSelect, 1);   //Set RS High for sending data to LCD
 
     SendCLKPulse();      //Send Pulse to EN for Activating the LCD
 
@@ -117,9 +112,9 @@ void LCD_MoveCursor(unsigned char row, unsigned char column)       //Rows and Co
     else
         position = ReturnCursorHomePosition;
 
-    LCD_Command(position);        //Call The LCD SendCommand Function to Excute The Command That Moves Cursor To The Needed Position
+    LCD_Command(position);
 
-    delay_ms(1);     //One Millisecond Delay
+    delay_ms(1);
 }
 /**********************************************************************************/
 
@@ -138,5 +133,3 @@ void LCD_MoveCursor(unsigned char row, unsigned char column)       //Rows and Co
 
 //Hex value to create the pattern (Heart)
 /*unsigned char HeartPattern[] = {0x00,0x1B,0x1F,0x1F,0x1F,0xE0,0x40,0x00};*/
-
-#endif //LCDDRIVER_H_INCLUDED
