@@ -7,24 +7,24 @@ void LCD_Initialize(void)
     GPIO_PORT_INT(GPIO_PORTA);            //Initialize Port A to interface with LCD
     GPIO_PORT_INT(GPIO_PORTB);            //Initialize Port B to interface with LCD
     SET_PORT_DIRECTION(LCD_DATAPORT, 0xFF);               //Set the LCD Data Port Direction as Output
-    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_RegSelect,1);     //Set the direction of RS Pin of LCD Control Port as Output
-    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ReadWrite,1);     //Set the direction of RW Pin of LCD Control Port as Output
-    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ENABLE,1);        //Set the direction of EN Pin of LCD Control Port as Output
+    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_RegSelect, 1);    //Set the direction of RS Pin of LCD Control Port as Output
+    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ReadWrite, 1);    //Set the direction of RW Pin of LCD Control Port as Output
+    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ENABLE, 1);       //Set the direction of EN Pin of LCD Control Port as Output
     WRITE_PIN_VALUE(LCD_CTRLPORT, LCD_ENABLE, 0);         //Set the RW Pin LOW to Enable the Write Operation on the LCD
 
-    delay_ms(20);    //LCD Power On Delay
+    Delay_OneMilliSec(20);    //LCD Power On Delay_OneMilliSec
 
     LCD_Command(FOUR_BITS_MODE);          //Initialize The LCD in 4-bit Mode
 
-    delay_ms(1);     //One Millisecond Delay
+    Delay_OneMilliSec(1);     //One Millisecond Delay
 
     LCD_Command(CursorBLINK_DisplayON);   //Initialize the LCD's display to be ON and cursor to be ON and Blinking
 
-    delay_ms(1);     //One Millisecond Delay
+    Delay_OneMilliSec(1);     //One Millisecond Delay
 
     LCD_Command(ENTRY_MODE_3);            //Initialize the LCD's Entry Mode to Shift Cursor Right
 
-    delay_ms(1);     //One Millisecond Delay
+    Delay_OneMilliSec(1);     //One Millisecond Delay
 
     LCD_ClearScreen();                  //Clear the LCD Display Screen by calling the LCD ClearScreen Function
 }
@@ -36,11 +36,11 @@ static void SendCLKPulse(void)
 {
  WRITE_PIN_VALUE(LCD_CTRLPORT, LCD_ENABLE, 1);     //Set Enable High
 
- delay_ms(2);     //Two Milliseconds Delay
+ Delay_OneMilliSec(2);     //Two Milliseconds Delay
 
  WRITE_PIN_VALUE(LCD_CTRLPORT, LCD_ENABLE, 0);     //Set Enable Low
 
- delay_ms(2);     //Two Milliseconds Delay
+ Delay_OneMilliSec(2);     //Two Milliseconds Delay
 }
 /**********************************************************************************/
 
@@ -54,7 +54,7 @@ void LCD_Command(unsigned char CMD)
 
     SendCLKPulse();      //Send Pulse to EN for Activating the LCD
 
-    delay_ms(1);     //One Millisecond Delay
+    Delay_OneMilliSec(1);     //One Millisecond Delay
 }
 /**********************************************************************************/
 
@@ -68,7 +68,7 @@ void LCD_Character(unsigned char character)
 
     SendCLKPulse();      //Send Pulse to EN for Activating the LCD
 
-    delay_ms(1);     //One Millisecond Delay
+    Delay_OneMilliSec(1);     //One Millisecond Delay
 }
 /**********************************************************************************/
 
@@ -89,13 +89,13 @@ void LCD_String(unsigned char *STR)       //Sends one character at a time to the
 
 void LCD_ClearScreen(void)
 {
-    LCD_Command(CLR_DisplayScreen);             //Clear the LCD's Display Screen
+    LCD_Command(CLR_DisplayScreen);            //Clear the LCD's Display Screen
 
-    delay_ms(10);                               //LCD Clear Screen Delay
+    Delay_OneMilliSec(10);                     //LCD Clear Screen Delay
 
-    LCD_Command(ReturnCursorHomePosition);      //Cursor at Home Position (Row1,Column1)
+    LCD_Command(ReturnCursorHomePosition);     //Cursor at Home Position (Row1,Column1)
 
-    delay_ms(1);     //One Millisecond Delay
+    Delay_OneMilliSec(1);     //One Millisecond Delay
 }
 /**********************************************************************************/
 
@@ -111,13 +111,14 @@ void LCD_MoveCursor(unsigned char row, unsigned char column)       //Rows and Co
     else if (row == 2)
         position = (0xC0) + (column - 1);             //Cursor at second row
 
-    else                                                //To ensure no garbage value is passed as a command
+    else                                              //To ensure no garbage value is passed as a command
         position = ReturnCursorHomePosition;
 
     LCD_Command(position);
 
-    delay_ms(1);
+    Delay_OneMilliSec(1);     //One Millisecond Delay
 }
+
 /**********************************************************************************/
 
 /*********************** LCD CreateCustomCharacter Function ***********************/

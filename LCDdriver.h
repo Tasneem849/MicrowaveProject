@@ -2,8 +2,8 @@
 #define LCDdriver_H
 
 #include "GPIO.h"
+#include "systick.h"
 #include "LCDdriver_CONFIGURATION.h"
-#include "DELAYdriver.h"
 
 void LCD_Initialize(void);
 
