@@ -10,7 +10,8 @@ void LCD_Initialize(void)
     SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_RegSelect, 1);    //Set the direction of RS Pin of LCD Control Port as Output
     SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ReadWrite, 1);    //Set the direction of RW Pin of LCD Control Port as Output
     SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ENABLE, 1);       //Set the direction of EN Pin of LCD Control Port as Output
-    WRITE_PIN_VALUE(LCD_CTRLPORT, LCD_ENABLE, 0);         //Set the RW Pin LOW to Enable the Write Operation on the LCD
+    WRITE_PIN_VALUE(LCD_CTRLPORT, LCD_ReadWrite, 0);      //Set the RW Pin LOW to Enable the Write Operation on the LCD
+    WRITE_PIN_VALUE(LCD_CTRLPORT, LCD_ENABLE, 0);         //Initialize the EN Pin Low
 
     Delay_OneMilliSec(20);    //LCD Power On Delay
 
