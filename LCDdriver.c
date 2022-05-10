@@ -4,10 +4,12 @@
 
 void LCD_Initialize(void)
 {
-    SET_PORT_DIRECTION(LCD_DATAPORT, 0xFF);                //Set the LCD Data Port Direction as Output
-    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_RegSelect,1);      //Set the direction of RS Pin of LCD Control Port as Output
-    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ReadWrite,1);      //Set the direction of RW Pin of LCD Control Port as Output
-    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ENABLE,1);         //Set the direction of EN Pin of LCD Control Port as Output
+    GPIO_PORT_INT(GPIO_PORTA);            //Initialize Port A to interface with LCD
+    GPIO_PORT_INT(GPIO_PORTB);            //Initialize Port B to interface with LCD
+    SET_PORT_DIRECTION(LCD_DATAPORT, 0xFF);               //Set the LCD Data Port Direction as Output
+    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_RegSelect,1);     //Set the direction of RS Pin of LCD Control Port as Output
+    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ReadWrite,1);     //Set the direction of RW Pin of LCD Control Port as Output
+    SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ENABLE,1);        //Set the direction of EN Pin of LCD Control Port as Output
     WRITE_PIN_VALUE(LCD_CTRLPORT, LCD_ENABLE, 0);         //Set the RW Pin LOW to Enable the Write Operation on the LCD
 
     delay_ms(20);    //LCD Power On Delay
@@ -78,7 +80,7 @@ void LCD_String(unsigned char *STR)       //Sends one character at a time to the
     {
         LCD_Character(*STR);    //Calling the LCD SendCharacter Function once each loop iteration
 
-        STR++;        //Incrementing the address by one each loop iteration
+        STR++;        //Incrementing the address by one for each loop iteration
     }
 }
 /**********************************************************************************/
@@ -104,12 +106,12 @@ void LCD_MoveCursor(unsigned char row, unsigned char column)       //Rows and Co
     unsigned char position = 0;
 
     if (row == 1)
-        position = (0x80) + (column - 1);
+        position = (0x80) + (column - 1);             //Cursor at first row
 
     else if (row == 2)
-        position = (0xC0) + (column - 1);
+        position = (0xC0) + (column - 1);             //Cursor at second row
 
-    else
+    else                                                //To ensure no garbage value is passed as a command
         position = ReturnCursorHomePosition;
 
     LCD_Command(position);
