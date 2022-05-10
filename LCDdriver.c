@@ -115,11 +115,11 @@ void LCD_MoveCursor(unsigned char row, unsigned char column)       //Rows and Co
         position = (0xC0) + (column - 1);
 
     else
-        position = ReturnCursortoInitialPosition;
+        position = ReturnCursorHomePosition;
 
-    LCD_Command(position);
+    LCD_Command(position);        //Call The LCD SendCommand Function to Excute The Command That Moves Cursor To The Needed Position
 
-    delay_ms(1);
+    delay_ms(1);     //One Millisecond Delay
 }
 /**********************************************************************************/
 
