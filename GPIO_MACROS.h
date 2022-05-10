@@ -4,7 +4,7 @@
 #define SET_BIT(RegName, BitNumber) (RegName) |= (1<<BitNumber)
 #define CLR_BIT(RegName, BitNumber) (RegName) &= (~(1<<BitNumber))
 #define TOG_BIT(RegName, BitNumber) (RegName) ^= (1<<BitNumber)
-#define READ_BIT(RegName, BitNumber) ((RegName) & (1<<BitNumbre)) >> BitNumber
+#define READ_BIT(RegName, BitNumber) ((RegName) & (1<<BitNumber)) >> BitNumber
 #define SET_PORT(RegName) (RegName) = 0xFF
 #define CLR_PORT(RegName) (RegName) = 0x00
 
