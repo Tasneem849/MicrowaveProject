@@ -15,7 +15,7 @@ void LCD_Initialize(void)
 
     Delay_OneMilliSec(20);    //LCD Power On Delay
 
-    LCD_Command(FOUR_BITS_MODE);          //Initialize The LCD in 4-bit Mode
+    LCD_Command(EIGHT_BITS_MODE);          //Initialize The LCD in 4-bit Mode
 
     Delay_OneMilliSec(1);     //One Millisecond Delay
 
