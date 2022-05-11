@@ -2,7 +2,7 @@
 
 
 void LED_Init(unsigned char PORTNAME , unsigned char PINNUMBER){
-    GPIO_INT(PORTNAME);//intialize port
+    GPIO_PORT_INT(PORTNAME);//intialize port
     SET_PIN_DIRECTION(PORTNAME, PINNUMBER, 1);//set the bin output
 
 }
