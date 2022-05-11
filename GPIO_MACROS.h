@@ -9,12 +9,12 @@
 #define CLR_PORT(RegName) (RegName) = 0x00
 
 //Ports
-#define GPIO_PORTA 0
-#define GPIO_PORTB 1
-#define GPIO_PORTC 2
-#define GPIO_PORTD 3
-#define GPIO_PORTE 4
-#define GPIO_PORTF 5
+#define GPIO_PORTA 'A'
+#define GPIO_PORTB 'B'
+#define GPIO_PORTC 'C'
+#define GPIO_PORTD 'D'
+#define GPIO_PORTE 'E'
+#define GPIO_PORTF 'F'
 
 //Pins
 #define GPIO_PIN0 0
