@@ -5,7 +5,7 @@ void GPIO_PORT_INT(unsigned char PORTNAME)
   switch(PORTNAME)
   {
   case GPIO_PORTA:
-    { SET_BIT(SYSCTL_RCGCGPIO_R, GPIO_PORTA);     //Clock Enable for port A
+    { SET_BIT(SYSCTL_RCGCGPIO_R, 0);              //Clock Enable for port A
       while(READ_BIT(SYSCTL_PRGPIO_R, 0) == 0);  //allow time for clock to start
       GPIO_PORTA_LOCK_R = 0x4C4F434B;           //unlock PORTA register
       GPIO_PORTA_CR_R = 0xFF;                  //Allow changes in Port A
@@ -14,7 +14,7 @@ void GPIO_PORT_INT(unsigned char PORTNAME)
     break;
 
   case GPIO_PORTB:
-    { SET_BIT(SYSCTL_RCGCGPIO_R, GPIO_PORTB);     //Clock Enable for port B
+    { SET_BIT(SYSCTL_RCGCGPIO_R, 1);              //Clock Enable for port B
       while(READ_BIT(SYSCTL_PRGPIO_R, 1) == 0);  //allow time for clock to start
       GPIO_PORTB_LOCK_R = 0x4C4F434B;           //unlock PORTB register
       GPIO_PORTB_CR_R = 0xFF; 		       //Allow changes in Port B
@@ -23,7 +23,7 @@ void GPIO_PORT_INT(unsigned char PORTNAME)
     break;
 
   case GPIO_PORTC:
-    { SET_BIT(SYSCTL_RCGCGPIO_R, GPIO_PORTC);     //Clock Enable for port C
+    { SET_BIT(SYSCTL_RCGCGPIO_R, 2);              //Clock Enable for port C
       while(READ_BIT(SYSCTL_PRGPIO_R, 2) == 0);  //allow time for clock to start
       GPIO_PORTC_LOCK_R = 0x4C4F434B; 		//unlock PORT C register
       GPIO_PORTC_CR_R |= 0xF0;                 //Allow changes in Port C for pins4-7 only The others are used JTAG on the board
@@ -32,7 +32,7 @@ void GPIO_PORT_INT(unsigned char PORTNAME)
     break;
 
   case GPIO_PORTD:
-    { SET_BIT(SYSCTL_RCGCGPIO_R, GPIO_PORTD);     //Clock Enable for port D
+    { SET_BIT(SYSCTL_RCGCGPIO_R, 3);              //Clock Enable for port D
       while(READ_BIT(SYSCTL_PRGPIO_R, 3) == 0);  //allow time for clock to start
       GPIO_PORTD_LOCK_R = 0x4C4F434B; 		//unlock PORTD register
       GPIO_PORTD_CR_R = 0xFF; 		       //Allow changes in Port D
@@ -41,7 +41,7 @@ void GPIO_PORT_INT(unsigned char PORTNAME)
     break;
 
   case GPIO_PORTE:
-    { SET_BIT(SYSCTL_RCGCGPIO_R, GPIO_PORTE);     //Clock Enable for port E
+    { SET_BIT(SYSCTL_RCGCGPIO_R, 4);              //Clock Enable for port E
       while(READ_BIT(SYSCTL_PRGPIO_R, 4) == 0);  //allow time for clock to start
       GPIO_PORTE_LOCK_R = 0x4C4F434B;           //unlock PORTE register
       GPIO_PORTE_CR_R = 0xFF;                  //Allow changes in Port E
@@ -50,7 +50,7 @@ void GPIO_PORT_INT(unsigned char PORTNAME)
     break;
 
   case GPIO_PORTF:
-    { SET_BIT(SYSCTL_RCGCGPIO_R, GPIO_PORTF);     //Clock Enable for port F
+    { SET_BIT(SYSCTL_RCGCGPIO_R, 5);              //Clock Enable for port F
       while(READ_BIT(SYSCTL_PRGPIO_R, 5) == 0);  //allow time for clock to start
       GPIO_PORTF_LOCK_R = 0x4C4F434B;           //unlock PORTF register
       GPIO_PORTF_CR_R = 0xFF;                  //Allow changes to Port F
