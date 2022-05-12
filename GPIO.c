@@ -1,8 +1,8 @@
 #include "GPIO.h"
 
-void GPIO_PORT_INT(unsigned char PORTNAME)
+void GPIO_PORT_INT(unsigned char PORT_NAME)
 {
-  switch(PORTNAME)
+  switch(PORT_NAME)
   {
   case GPIO_PORTA:
     { SET_BIT(SYSCTL_RCGCGPIO_R, 0);              //Clock Enable for port A
@@ -62,73 +62,73 @@ void GPIO_PORT_INT(unsigned char PORTNAME)
 
 //**********************************************************************************************************************//
 
-void SET_PIN_DIRECTION(unsigned char PORTNAME, unsigned char PINNUMBER, unsigned char DIRECTION)
+void SET_PIN_DIRECTION(unsigned char PORT_NAME, unsigned char PIN_NUMBER, unsigned char DIRECTION)
 {
-  switch(PORTNAME)
+  switch(PORT_NAME)
   {
   case GPIO_PORTA:
     if(DIRECTION==1)
     {
-      SET_BIT(GPIO_PORTA_DIR_R, PINNUMBER); //Make the PIN output by setting it high
+      SET_BIT(GPIO_PORTA_DIR_R, PIN_UMBER); //Make the PIN output by setting it high
     }
     else
     {
-      CLR_BIT(GPIO_PORTA_DIR_R, PINNUMBER); //Make the PIN input by setting it low
+      CLR_BIT(GPIO_PORTA_DIR_R, PIN_NUMBER); //Make the PIN input by setting it low
     }
     break;
 
   case GPIO_PORTB:
     if(DIRECTION==1)
     {
-      SET_BIT(GPIO_PORTB_DIR_R, PINNUMBER); //Make the PIN output by setting it
+      SET_BIT(GPIO_PORTB_DIR_R, PIN_NUMBER); //Make the PIN output by setting it
     }
     else
     {
-      CLR_BIT(GPIO_PORTB_DIR_R, PINNUMBER); //Make the PIN input
+      CLR_BIT(GPIO_PORTB_DIR_R, PIN_NUMBER); //Make the PIN input
     }
     break;
 
   case GPIO_PORTC:
     if(DIRECTION==1)
     {
-      SET_BIT(GPIO_PORTC_DIR_R, PINNUMBER); //Make the PIN output by setting it
+      SET_BIT(GPIO_PORTC_DIR_R, PIN_NUMBER); //Make the PIN output by setting it
     }
     else
     {
-      CLR_BIT(GPIO_PORTC_DIR_R, PINNUMBER); //Make the PIN input
+      CLR_BIT(GPIO_PORTC_DIR_R, PIN_NUMBER); //Make the PIN input
     }
     break;
 
   case GPIO_PORTD:
     if(DIRECTION==1)
     {
-      SET_BIT(GPIO_PORTD_DIR_R, PINNUMBER); //Make the PIN output by setting it
+      SET_BIT(GPIO_PORTD_DIR_R, PIN_NUMBER); //Make the PIN output by setting it
     }
     else
     {
-      CLR_BIT(GPIO_PORTD_DIR_R, PINNUMBER); //Make the PIN input
+      CLR_BIT(GPIO_PORTD_DIR_R, PIN_NUMBER); //Make the PIN input
     }
     break;
 
   case GPIO_PORTE:
     if(DIRECTION==1)
     {
-      SET_BIT(GPIO_PORTE_DIR_R, PINNUMBER); //Make the PIN output by setting it
+      SET_BIT(GPIO_PORTE_DIR_R, PIN_NUMBER); //Make the PIN output by setting it
     }
     else
     {
-      CLR_BIT(GPIO_PORTE_DIR_R, PINNUMBER); //Make the PIN input
+      CLR_BIT(GPIO_PORTE_DIR_R, PIN_NUMBER); //Make the PIN input
     }
     break;
 
   case GPIO_PORTF:
     if(DIRECTION==1)
     {
-      SET_BIT(GPIO_PORTF_DIR_R, PINNUMBER); //Make the PIN output by setting it
+      SET_BIT(GPIO_PORTF_DIR_R, PIN_NUMBER); //Make the PIN output by setting it
     }
     else
     {
-      CLR_BIT(GPIO_PORTF_DIR_R, PINNUMBER); //Make the PIN input
+      CLR_BIT(GPIO_PORTF_DIR_R, PIN_NUMBER); //Make the PIN input
     }
     break;
   }
@@ -136,19 +136,19 @@ void SET_PIN_DIRECTION(unsigned char PORTNAME, unsigned char PINNUMBER, unsigned
 
 //*******************************************************************************************************************************
 
-void WRITE_PIN_VALUE(unsigned char PORTNAME, unsigned char PINNUMBER, unsigned char VALUE)
+void WRITE_PIN_VALUE(unsigned char PORT_NAME, unsigned char PIN_NUMBER, unsigned char VALUE)
 {
- switch(PORTNAME)
+ switch(PORT_NAME)
  {
   case GPIO_PORTA:   //Write Data to Pin in portA
    {
     if(VALUE==1)
     {
-      SET_BIT(GPIO_PORTA_DATA_R, PINNUMBER);  
+      SET_BIT(GPIO_PORTA_DATA_R, PIN_NUMBER);  
     }
     else if(VALUE==0)
     {
-      CLR_BIT(GPIO_PORTA_DATA_R, PINNUMBER); 
+      CLR_BIT(GPIO_PORTA_DATA_R, PIN_NUMBER); 
     }
    }
    break;
@@ -157,11 +157,11 @@ void WRITE_PIN_VALUE(unsigned char PORTNAME, unsigned char PINNUMBER, unsigned c
    {
     if(VALUE==1)
     {
-      SET_BIT(GPIO_PORTB_DATA_R, PINNUMBER); 
+      SET_BIT(GPIO_PORTB_DATA_R, PIN_NUMBER); 
     }
     else if(VALUE==0)
     {
-      CLR_BIT(GPIO_PORTB_DATA_R, PINNUMBER); 
+      CLR_BIT(GPIO_PORTB_DATA_R, PIN_NUMBER); 
     }
    }
    break;
@@ -170,11 +170,11 @@ void WRITE_PIN_VALUE(unsigned char PORTNAME, unsigned char PINNUMBER, unsigned c
    {
     if(VALUE==1)
     {
-      SET_BIT(GPIO_PORTC_DATA_R, PINNUMBER); 
+      SET_BIT(GPIO_PORTC_DATA_R, PIN_NUMBER); 
     } 
     else if(VALUE==0)
     {
-      CLR_BIT(GPIO_PORTC_DATA_R, PINNUMBER); 
+      CLR_BIT(GPIO_PORTC_DATA_R, PIN_NUMBER); 
     }
    }
    break;
@@ -183,11 +183,11 @@ void WRITE_PIN_VALUE(unsigned char PORTNAME, unsigned char PINNUMBER, unsigned c
    {
     if(VALUE==1)
     {
-      SET_BIT(GPIO_PORTD_DATA_R, PINNUMBER); 
+      SET_BIT(GPIO_PORTD_DATA_R, PIN_NUMBER); 
     }
     else if(VALUE==0)
     {
-      CLR_BIT(GPIO_PORTD_DATA_R, PINNUMBER); 
+      CLR_BIT(GPIO_PORTD_DATA_R, PIN_NUMBER); 
     }
    }
    break;
@@ -196,11 +196,11 @@ void WRITE_PIN_VALUE(unsigned char PORTNAME, unsigned char PINNUMBER, unsigned c
    {
     if(VALUE==1)
     {
-      SET_BIT(GPIO_PORTE_DATA_R, PINNUMBER); 
+      SET_BIT(GPIO_PORTE_DATA_R, PIN_NUMBER); 
     }
     else if(VALUE==0)
     {
-      CLR_BIT(GPIO_PORTE_DATA_R, PINNUMBER); 
+      CLR_BIT(GPIO_PORTE_DATA_R, PIN_NUMBER); 
     }
    }
    break;
@@ -209,11 +209,11 @@ void WRITE_PIN_VALUE(unsigned char PORTNAME, unsigned char PINNUMBER, unsigned c
    {
     if(VALUE==1)
     {
-      SET_BIT(GPIO_PORTF_DATA_R, PINNUMBER); 
+      SET_BIT(GPIO_PORTF_DATA_R, PIN_NUMBER); 
     }
     else if(VALUE==0)
     {
-      CLR_BIT(GPIO_PORTF_DATA_R, PINNUMBER); 
+      CLR_BIT(GPIO_PORTF_DATA_R, PIN_NUMBER); 
     }
    }
    break;
@@ -222,44 +222,44 @@ void WRITE_PIN_VALUE(unsigned char PORTNAME, unsigned char PINNUMBER, unsigned c
 
 //*******************************************************************************************************************************
 
-unsigned char READ_PIN_VALUE(unsigned char PORTNAME, unsigned char PINNUMBER)
+unsigned char READ_PIN_VALUE(unsigned char PORT_NAME, unsigned char PIN_NUMBER)
 {
  unsigned char return_value; //Variable to store the return value of the function
-  switch(PORTNAME)
+  switch(PORT_NAME)
   {
     case GPIO_PORTA:   //Read Data from Pin in portA
      {
-       return_value = READ_BIT(GPIO_PORTA_DATA_R, PINNUMBER);
+       return_value = READ_BIT(GPIO_PORTA_DATA_R, PIN_NUMBER);
      }	
      break;
 
     case GPIO_PORTB:   //Read Data from Pin in portB
      {
-       return_value = READ_BIT(GPIO_PORTB_DATA_R, PINNUMBER);
+       return_value = READ_BIT(GPIO_PORTB_DATA_R, PIN_NUMBER);
      }	
      break;
 
     case GPIO_PORTC:   //Read Data from Pin in portC
      {
-       return_value = READ_BIT(GPIO_PORTC_DATA_R, PINNUMBER);
+       return_value = READ_BIT(GPIO_PORTC_DATA_R, PIN_NUMBER);
      }	
      break;
 
     case GPIO_PORTD:   //Read Data from Pin in portD
      {
-       return_value = READ_BIT(GPIO_PORTD_DATA_R, PINNUMBER);
+       return_value = READ_BIT(GPIO_PORTD_DATA_R, PIN_NUMBER);
      }
      break;
 
     case GPIO_PORTE:   //Read Data from Pin in portE
      {
-       return_value = READ_BIT(GPIO_PORTE_DATA_R, PINNUMBER);
+       return_value = READ_BIT(GPIO_PORTE_DATA_R, PIN_NUMBER);
      }
      break;
 
     case GPIO_PORTF:   //Read Data from Pin in portF
      {
-       return_value = READ_BIT(GPIO_PORTF_DATA_R, PINNUMBER);
+       return_value = READ_BIT(GPIO_PORTF_DATA_R, PIN_NUMBER);
      }
      break;
   }
@@ -268,43 +268,43 @@ return return_value;
 
 //*******************************************************************************************************************************
 
-void TOGGLE_PIN(unsigned char PORTNAME, unsigned char PINNUMBER)
+void TOGGLE_PIN(unsigned char PORT_NAME, unsigned char PIN_NUMBER)
 {
-switch(PORTNAME)
+switch(PORT_NAME)
 {
    case GPIO_PORTA: 
     {
-      TOG_BIT(GPIO_PORTA_DATA_R, PINNUMBER); //To invert Pin in PortA
+      TOG_BIT(GPIO_PORTA_DATA_R, PIN_NUMBER); //To invert Pin in PortA
     }
     break;
 
    case GPIO_PORTB:
     {
-      TOG_BIT(GPIO_PORTB_DATA_R, PINNUMBER); //To invert Pin in PortB
+      TOG_BIT(GPIO_PORTB_DATA_R, PIN_NUMBER); //To invert Pin in PortB
     }
     break;
 
    case GPIO_PORTC:
     {
-      TOG_BIT(GPIO_PORTC_DATA_R, PINNUMBER); //To invert Pin in PortC
+      TOG_BIT(GPIO_PORTC_DATA_R, PIN_NUMBER); //To invert Pin in PortC
     }
     break;
 
    case GPIO_PORTD:
     {
-      TOG_BIT(GPIO_PORTD_DATA_R, PINNUMBER); //To invert Pin in PortD
+      TOG_BIT(GPIO_PORTD_DATA_R, PIN_NUMBER); //To invert Pin in PortD
     }
     break;
 
    case GPIO_PORTE:
     {
-      TOG_BIT(GPIO_PORTE_DATA_R, PINNUMBER); //To invert Pin in PortE
+      TOG_BIT(GPIO_PORTE_DATA_R, PIN_NUMBER); //To invert Pin in PortE
     }
     break;
 
    case GPIO_PORTF:
     {
-      TOG_BIT(GPIO_PORTF_DATA_R, PINNUMBER); //To invert Pin in PortF
+      TOG_BIT(GPIO_PORTF_DATA_R, PIN_NUMBER); //To invert Pin in PortF
     }
     break;
   }
@@ -312,9 +312,9 @@ switch(PORTNAME)
 
 //*******************************************************************************************************************************
 
-void SET_PORT_DIRECTION(unsigned char PORTNAME, unsigned char DIRECTION)
+void SET_PORT_DIRECTION(unsigned char PORT_NAME, unsigned char DIRECTION)
 {
-  switch(PORTNAME)
+  switch(PORT_NAME)
    {
     case GPIO_PORTA: 
      {
@@ -356,9 +356,9 @@ void SET_PORT_DIRECTION(unsigned char PORTNAME, unsigned char DIRECTION)
 
 //*******************************************************************************************************************************
 
-void WRITE_PORT_VALUE(unsigned char PORTNAME, unsigned char VALUE)
+void WRITE_PORT_VALUE(unsigned char PORT_NAME, unsigned char VALUE)
 {
-  switch(PORTNAME)
+  switch(PORT_NAME)
    {
     case GPIO_PORTA:
      {
@@ -400,10 +400,10 @@ void WRITE_PORT_VALUE(unsigned char PORTNAME, unsigned char VALUE)
 
 //*******************************************************************************************************************************
 
-unsigned char READ_PORT(unsigned char PORTNAME)
+unsigned char READ_PORT(unsigned char PORT_NAME)
 {
   unsigned char return_value;
-  switch(PORTNAME)
+  switch(PORT_NAME)
   {
     case GPIO_PORTA:
      {
@@ -447,9 +447,9 @@ return return_value;
 
 //*******************************************************************************************************************************
 
-void ENABLE_PULLUP(unsigned char PORTNAME, unsigned char PINNUMBER)
+void ENABLE_PULLUP(unsigned char PORT_NAME, unsigned char PIN_NUMBER)
 {
-  switch(PORTNAME)
+  switch(PORT_NAME)
   {
     case GPIO_PORTA:
      {
@@ -491,11 +491,11 @@ void ENABLE_PULLUP(unsigned char PORTNAME, unsigned char PINNUMBER)
 
 //*******************************************************************************************************************************
 
-void WRITE_HIGH_NIPPLE(unsigned char PORTNAME, unsigned char VALUE)
+void WRITE_HIGH_NIPPLE(unsigned char PORT_NAME, unsigned char VALUE)
 {
   VALUE <<= 4; //Shifting left the data value by 4 
 
-  switch(PORTNAME)
+  switch(PORT_NAME)
   {
     case GPIO_PORTA: //Writing on the most significant 4 bits of PortA
      {
@@ -543,9 +543,9 @@ void WRITE_HIGH_NIPPLE(unsigned char PORTNAME, unsigned char VALUE)
 
 //*******************************************************************************************************************************
 
-void WRITE_LOW_NIPPLE(unsigned char PORTNAME, unsigned char VALUE)
+void WRITE_LOW_NIPPLE(unsigned char PORT_NAME, unsigned char VALUE)
 {
-  switch(PORTNAME)
+  switch(PORT_NAME)
   {
    case GPIO_PORTA: //Writing on the least significant 4 bits of PortA
     {
