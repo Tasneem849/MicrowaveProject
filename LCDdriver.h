@@ -5,7 +5,7 @@
 #include "systick.h"
 #include "LCDdriver_CONFIGURATION.h"
 
-void LCD_Initialize(void);
+void LCD_Init(void);
 
 static void SendCLKPulse(void);
 

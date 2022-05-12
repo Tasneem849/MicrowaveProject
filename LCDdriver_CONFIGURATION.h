@@ -3,11 +3,11 @@
 
 /*********************** LCD_MACROS ***********************/
 
-#define LCD_DATAPORT 'A'              //Define LCD Data Pins (D0-D7) as Port A
-#define LCD_CTRLPORT 'B'              //Define LCD Control Pins (RS,RW,E) as Port B
-#define LCD_RegSelect 0               //Define Pin RS of LCD_CTRLPORT as Pin B0
-#define LCD_ReadWrite 1               //Define Pin RW of LCD_CTRLPORT as Pin B1
-#define LCD_ENABLE 2                  //Define Pin EN of LCD_CTRLPORT as Pin B2
+#define LCD_DATAPORT 'B'            //Define LCD Data Pins (D0-D7) as Port B
+#define LCD_CTRLPORT 'E'            //Define LCD Control Pins (RS,RW,E) as Port E
+#define LCD_ENABLE 0                //Define Pin EN of LCD_CTRLPORT as Pin E0
+#define LCD_ReadWrite 1             //Define Pin RW of LCD_CTRLPORT as Pin E1
+#define LCD_RegSelect 2             //Define Pin RS of LCD_CTRLPORT as Pin E2
 
 /********************** LCD_COMMANDS **********************/
 

@@ -2,10 +2,10 @@
 
 /********************** LCD Initialization Function **********************/
 
-void LCD_Initialize(void)
+void LCD_Init(void)
 {
-    GPIO_PORT_INT(GPIO_PORTA);            //Initialize Port A to interface with LCD
-    GPIO_PORT_INT(GPIO_PORTB);            //Initialize Port B to interface with LCD
+    GPIO_PORT_INT(LCD_DATAPORT);            //Initialize Port B to interface with LCD
+    GPIO_PORT_INT(LCD_CTRLPORT);            //Initialize Port E to interface with LCD
     SET_PORT_DIRECTION(LCD_DATAPORT, 0xFF);               //Set the LCD Data Port Direction as Output
     SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_RegSelect, 1);    //Set the direction of RS Pin of LCD Control Port as Output
     SET_PIN_DIRECTION(LCD_CTRLPORT, LCD_ReadWrite, 1);    //Set the direction of RW Pin of LCD Control Port as Output
@@ -15,7 +15,7 @@ void LCD_Initialize(void)
 
     Delay_OneMilliSec(20);    //LCD Power On Delay
 
-    LCD_Command(EIGHT_BITS_MODE);          //Initialize The LCD in 4-bit Mode
+    LCD_Command(EIGHT_BITS_MODE);          //Initialize The LCD in 8-bit Mode
 
     Delay_OneMilliSec(1);     //One Millisecond Delay
 
