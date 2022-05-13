@@ -44,13 +44,12 @@ unsigned char KEYPAD_READ(void)
 							J = READ_PIN_VALUE(KEYPAD_COLUMNS, COL + 4);
 							
 							if(J==0)
+							{
 								RETURN_VAL = ARRAY[ROW][COL];
-							break;
-						}
+								return RETURN_VAL;
+							}
 						
-					if(J==0) break;
-						
-					return RETURN_VAL;
+					       }
 				}
 				
 				return RETURN_VAL;
