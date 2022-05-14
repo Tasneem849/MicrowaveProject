@@ -20,6 +20,7 @@ void timer_wait_oneSec(void)
     {
        TIMER0_ICR_R |= 0x01;
        TIMER0_MIS_R ^= (1<<2);
+	    break; 
     }
     }
 }
