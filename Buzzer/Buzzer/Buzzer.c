@@ -29,10 +29,10 @@ void Buzzer_Alarm(unsigned long seconds)			//Buzzer produce an alarm for certain
 	int i;
   for (i=0; i<seconds; i++)
 	{
-	  SET_PIN_VALUE(BuzzerPort,BuzzerPin, 1);
+	  WRITE_PIN_VALUE(BuzzerPort,BuzzerPin, 1);
 	  Delay_OneMilliSec(500);
-	  SET_PIN_VALUE(BuzzerPort,BuzzerPin, 0);
+	  WRITE_PIN_VALUE(BuzzerPort,BuzzerPin, 0);
 	  Delay_OneMilliSec(500);
   }
-  SET_PIN_VALUE(BuzzerPort,BuzzerPin, 0);
+  WRITE_PIN_VALUE(BuzzerPort,BuzzerPin, 0);
 }
