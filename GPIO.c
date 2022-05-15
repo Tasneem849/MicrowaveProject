@@ -69,7 +69,7 @@ void SET_PIN_DIRECTION(unsigned char PORT_NAME, unsigned char PIN_NUMBER, unsign
   case GPIO_PORTA:
     if(DIRECTION==1)
     {
-      SET_BIT(GPIO_PORTA_DIR_R, PIN_UMBER); //Make the PIN output by setting it high
+      SET_BIT(GPIO_PORTA_DIR_R, PIN_NUMBER); //Make the PIN output by setting it high
     }
     else
     {
@@ -453,37 +453,37 @@ void ENABLE_PULLUP(unsigned char PORT_NAME, unsigned char PIN_NUMBER)
   {
     case GPIO_PORTA:
      {
-       SET_BIT(GPIO_PORTA_PUR_R, PINNUMBER); //Setting Pull Up Resistor of PortA
+       SET_BIT(GPIO_PORTA_PUR_R, PIN_NUMBER); //Setting Pull Up Resistor of PortA
      }
      break;
 
     case GPIO_PORTB:
      {
-       SET_BIT(GPIO_PORTB_PUR_R, PINNUMBER); //Setting Pull Up Resistor of PortB
+       SET_BIT(GPIO_PORTB_PUR_R, PIN_NUMBER); //Setting Pull Up Resistor of PortB
      }
      break;
 
     case GPIO_PORTC:
      {
-       SET_BIT(GPIO_PORTC_PUR_R, PINNUMBER); //Setting Pull Up Resistor of PortC
+       SET_BIT(GPIO_PORTC_PUR_R, PIN_NUMBER); //Setting Pull Up Resistor of PortC
      }
      break;
 
     case GPIO_PORTD:
      {
-       SET_BIT(GPIO_PORTD_PUR_R, PINNUMBER); //Setting Pull Up Resistor of PortD
+       SET_BIT(GPIO_PORTD_PUR_R, PIN_NUMBER); //Setting Pull Up Resistor of PortD
      }
      break;
 
     case GPIO_PORTE:
      {
-       SET_BIT(GPIO_PORTE_PUR_R, PINNUMBER); //Setting Pull Up Resistor of PortE
+       SET_BIT(GPIO_PORTE_PUR_R, PIN_NUMBER); //Setting Pull Up Resistor of PortE
      }
      break;
 
     case GPIO_PORTF:
      {
-       SET_BIT(GPIO_PORTF_PUR_R, PINNUMBER); //Setting Pull Up Resistor of PortF
+       SET_BIT(GPIO_PORTF_PUR_R, PIN_NUMBER); //Setting Pull Up Resistor of PortF
      }
      break;
    }
@@ -532,7 +532,7 @@ void WRITE_HIGH_NIPPLE(unsigned char PORT_NAME, unsigned char VALUE)
     }
     break;
 
-   case GPIO_PORTF //Writing on the most significant 4 bits of PortF
+   case GPIO_PORTF: //Writing on the most significant 4 bits of PortF
     {
       GPIO_PORTF_DATA_R &= 0X0F;    //ANDing with a mask of zeros from bits 4 to 7
       GPIO_PORTF_DATA_R |= VALUE;  //ORing with the data value after shifting
