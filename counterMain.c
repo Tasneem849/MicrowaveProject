@@ -24,3 +24,27 @@ LCD_ClearScreen();
 }
 }
 
+void Countdown_doubletochar(double Time)		//Convert double value to char
+{
+	unsigned char minutes_Tens;				//Variable to store the value of the integer part only in tens
+	unsigned char minutes_Units;			//Variable to store the value of the integer part only in units
+	int seconds;											//Variable to store the total value of the decimal part only (total seconds)
+	unsigned char	seconds_Tens;				//Variable to store the value of the decimal part only in tens
+	unsigned char seconds_Units;			//Variable to store the value of the decimal part only in units
+	unsigned char ArrayOfChar[4];			//Array to store in it the four variables as characters
+	
+	minutes_Tens = (Time / 10);
+	minutes_Units = (Time - (minutes_Tens * 10));
+
+	seconds = ((Time - (int)Time) * 60);
+
+	seconds_Tens = (seconds / 10);
+	seconds_Units =	(seconds - (seconds_Tens * 10));
+
+	ArrayOfChar[0] = minutes_Tens + '0';
+	ArrayOfChar[1] = minutes_Units + '0';
+	ArrayOfChar[2] = seconds_Tens + '0';
+	ArrayOfChar[3] = seconds_Units + '0';
+	
+	Count(ArrayOfChar);
+}
