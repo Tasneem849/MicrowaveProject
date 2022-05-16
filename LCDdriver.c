@@ -77,7 +77,7 @@ void LCD_Character(unsigned char character)
 
 void LCD_String(unsigned char *STR)       //Sends one character at a time to the LCD SendCharacter Function till the end of the string.
 {
-    while ((*STR) != '0')       //As long as string is not terminated by NULL
+    while ((*STR) != '\0')       //As long as string is not terminated by NULL
     {
         LCD_Character(*STR);    //Calling the LCD SendCharacter Function once each loop iteration
 
@@ -122,18 +122,113 @@ void LCD_MoveCursor(unsigned char row, unsigned char column)       //Rows and Co
 
 /**********************************************************************************/
 
-/*********************** LCD CreateCustomCharacter Function ***********************/
-
-/*void CreateCustomCharacter(unsigned char *Pattern, unsigned char Location)
+void LCD_DisplayPressed(void)
 {
-    int i;
+	int K;
+	unsigned char PressedKey;
+	PressedKey = KEYPAD_READ();
 
-    LCD_Command(0x40 + (Location*8));  //Send the Address of CGRAM
+	while(PressedKey == 0xFF);
 
-    for(i = 0; i < 8; i++)
-        LCD_Character(Pattern[i]);     //Pass the bytes of pattern to LCD
+	if(PressedKey == '1')
+		{
+			LCD_Character('1');
+			K++;
+		}
+
+		if(PressedKey == '4')
+		{
+			LCD_Character('4');
+			K++;
+		}
+
+		if(PressedKey == '7')
+		{
+			LCD_Character('7');
+			K++;
+		}
+
+		if(PressedKey == '*')
+		{
+			LCD_Character('*');
+			K++;
+		}
+
+		if(PressedKey == '2')
+		{
+			LCD_Character('2');
+			K++;
+		}
+
+		if(PressedKey == '5')
+		{
+			LCD_Character('5');
+			K++;
+		}
+
+		if(PressedKey == '8')
+		{
+			LCD_Character('8');
+			K++;
+		}
+
+		if(PressedKey == '0')
+		{
+			LCD_Character('0');
+			K++;
+		}
+
+		if(PressedKey == '3')
+		{
+			LCD_Character('3');
+			K++;
+		}
+
+		if(PressedKey == '6')
+		{
+			LCD_Character('6');
+			K++;
+		}
+
+		if(PressedKey == '9')
+		{
+			LCD_Character('9');
+			K++;
+		}
+
+		if(PressedKey == '#')
+		{
+			LCD_Character('#');
+			K++;
+		}
+
+		if(PressedKey == 'A')
+		{
+			LCD_Character('A');
+			K++;
+		}
+
+		if(PressedKey == 'B')
+		{
+			LCD_Character('B');
+			K++;
+		}
+
+		if(PressedKey == 'C')
+		{
+			LCD_Character('C');
+			K++;
+		}
+
+		if(PressedKey == 'D')
+		{
+			LCD_Character('D');
+			K++;
+		}
+
+		if(K == 32)			//if LCD Display is full
+		{
+			LCD_ClearScreen();    //Clear Screen and Return Cursor to Home Position
+			K = 0;	//Counter resets
+		}
 }
-/**********************************************************************************/
-
-//Hex value to create the pattern (Heart)
-/*unsigned char HeartPattern[] = {0x00,0x1B,0x1F,0x1F,0x1F,0xE0,0x40,0x00};*/

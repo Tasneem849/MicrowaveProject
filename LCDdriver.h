@@ -4,6 +4,7 @@
 #include "GPIO.h"
 #include "systick.h"
 #include "LCDdriver_CONFIGURATION.h"
+#include "Keypad.h"
 
 void LCD_Init(void);
 
@@ -19,6 +20,6 @@ void LCD_ClearScreen(void);
 
 void LCD_MoveCursor(unsigned char row, unsigned char column);
 
-void CreateCustomCharacter(unsigned char *Pattern, unsigned char Location);
+void LCD_DisplayPressed(void);
 
 #endif //LCDdriver_H
