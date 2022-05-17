@@ -1,27 +1,27 @@
 #include "button.h"
 
 
-void BUTTON_INIT(unsigned char PORTNAME , unsigned char PINNUMBER){
+void BUTTON_INIT(unsigned char PORT_NAME , unsigned char PIN_NUMBER){
 
-    GPIO_INIT(PORTNAME);//intialize port
+    GPIO_INIT(PORT_NAME);//intialize port
 
-    SET_PIN_DIRECTION(PORTNAME , PINNUMBER , 0);//set the pin input
+    SET_PIN_DIRECTION(PORT_NAME , PIN_NUMBER , 0);//set the pin input
     }
 
 
-unsigned char READ_BUTTON(unsigned char PORTNAME , unsigned char PINNUMBER){
+unsigned char READ_BUTTON(unsigned char PORT_NAME , unsigned char PIN_NUMBER){
 
-    return(READ_PIN_VALUE(PORTNAME , PINNUMBER));//set the button push on or not
+    return(READ_PIN_VALUE(PORT_NAME , PIN_NUMBER));//set the button push on or not
 }
 
 
 
 
-void enable_PULLUP_RESISTOR(unsigned char PORTNAME , unsigned char PINNUMBER) {
+void enable_PULLUP_RESISTOR(unsigned char PORT_NAME , unsigned char PIN_NUMBER) {
 
-    SET_PIN_DIRECTION(PORTNAME , PINNUMBER , 0);//set the pin input
+    SET_PIN_DIRECTION(PORT_NAME , PIN_NUMBER , 0);//set the pin input
 
-    ENABLE_PULLUP(PORTNAME , PINNUMBER);//enable pull up resistance
+    ENABLE_PULLUP(PORT_NAME , PIN_NUMBER);//enable pull up resistance
 
 
 }
