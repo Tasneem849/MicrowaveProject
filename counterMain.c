@@ -2,27 +2,32 @@
 // input is array of char arranged where minutes tenth is the first value then munites unitth then seconds tenth then seconds units 
 // example 0130 is 1 minute and 30 seconds
 
-void Count(unsigned char count[]){
+extern unsigned char countArray[];
+
+void Count(){
+
 LCD_Init();
-LCD_String(count);
+LCD_String(countArray);
 Timer_Init();
-while (1) {
-if ( count[3] != '0') { count[3]--;}  // if seconds not equal zero minus seconds
-else if (count[3]=='0' & count[2] !='0')   {count[2]--; count[3]='9';} // minus 10th of seconds
-else if (count[3]=='0' & count[2] =='0' & count[1]!='0')   { count [3]='9' ; count[2]='5'; count[1]--;} // minus minutes
-else if (count[3]=='0' & count[2] =='0' & count[1]=='0' & count[0] != '0')   { count [3]='9' ; count[2]='5'; count[1]='9' ; count[0]--;}
-else if (count[3]=='0' & count[2] =='0' & count[1]=='0' & count[0] == '0' ) { break;}
-LCD_Character(count[0]);
-LCD_Character(count[1]);
-LCD_Character(':');
-LCD_Character(count[2]);
-LCD_Character(count[3]);
-timer_wait_oneSec();
-LCD_ClearScreen();
-}
+
+while (1)
+	{
+		if ( countArray[3] != '0') { countArray[3]--;}  // if seconds not equal zero minus seconds
+		else if (countArray[3]=='0' & countArray[2] !='0')   {countArray[2]--; countArray[3]='9';} // minus 10th of seconds
+		else if (countArray[3]=='0' & countArray[2] =='0' & countArray[1]!='0')   { countArray [3]='9' ; countArray[2]='5'; countArray[1]--;} // minus minutes
+		else if (countArray[3]=='0' & countArray[2] =='0' & countArray[1]=='0' & countArray[0] != '0')   { countArray [3]='9' ; countArray[2]='5'; countArray[1]='9' ; countArray[0]--;}
+		else if (countArray[3]=='0' & countArray[2] =='0' & countArray[1]=='0' & countArray[0] == '0' ) { break;}
+		LCD_Character(countArray[0]);
+		LCD_Character(countArray[1]);
+		LCD_Character(':');
+		LCD_Character(countArray[2]);
+		LCD_Character(countArray[3]);
+		timer_wait_oneSec();
+		LCD_ClearScreen();
+	}
 }
 
-void Countdown_doubletochar(double Time, unsigned char* ArrayOfChar)		//Convert double value to an array of characters
+void Countdown_doubletochar(double Time)		//Convert double value to an array of characters
 {
 	unsigned char minutes_Tens;				//Variable to store the value of the integer part only in tens
 	unsigned char minutes_Units;			//Variable to store the value of the integer part only in units
@@ -38,8 +43,8 @@ void Countdown_doubletochar(double Time, unsigned char* ArrayOfChar)		//Convert 
 	seconds_Tens = (seconds / 10);
 	seconds_Units =	(seconds - (seconds_Tens * 10));
 
-	ArrayOfChar[0] = minutes_Tens + '0';
-	ArrayOfChar[1] = minutes_Units + '0';
-	ArrayOfChar[2] = seconds_Tens + '0';
-	ArrayOfChar[3] = seconds_Units + '0';
+	countArray[0] = minutes_Tens + '0';
+	countArray[1] = minutes_Units + '0';
+	countArray[2] = seconds_Tens + '0';
+	countArray[3] = seconds_Units + '0';
 }
