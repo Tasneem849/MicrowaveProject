@@ -2,7 +2,7 @@
 // input is array of char arranged where minutes tenth is the first value then munites unitth then seconds tenth then seconds units 
 // example 0130 is 1 minute and 30 seconds
 
-extern unsigned char countArray[];
+
 
 void Count(){
 
