@@ -1,7 +1,7 @@
 #include "GPIO.h"
 
-void BUTTON_INIT(unsigned char PORTNAME , unsigned char PINNUMBER);
+void BUTTON_INIT(unsigned char PORT_NAME , unsigned char PIN_NUMBER);
 
-unsigned char READ_BUTTON(unsigned char PORTNAME , unsigned char PINNUMBER);
+unsigned char READ_BUTTON(unsigned char PORT_NAME , unsigned char PIN_NUMBER);
 
-void enable_PULLUP_RESISTOR(unsigned char PORTNAME , unsigned char PINNUMBER);
+void enable_PULLUP_RESISTOR(unsigned char PORT_NAME , unsigned char PIN_NUMBER);
