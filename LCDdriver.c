@@ -77,7 +77,7 @@ void LCD_Character(unsigned char character)
 
 void LCD_String(unsigned char *STR)       //Sends one character at a time to the LCD SendCharacter Function till the end of the string.
 {
-    while ((*STR) != '\0')       //As long as string is not terminated by NULL
+    while (*STR)       //As long as string is not terminated
     {
         LCD_Character(*STR);    //Calling the LCD SendCharacter Function once each loop iteration
 
