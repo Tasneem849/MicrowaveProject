@@ -1,4 +1,4 @@
 #include "LCDdriver.h"
 #include "timerA.h"
-void Count(unsigned char count[]);
-void Countdown_doubletochar(double Time, unsigned char* ArrayOfChar);
+void Count();
+void Countdown_doubletochar(double Time);
