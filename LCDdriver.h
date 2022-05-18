@@ -20,6 +20,4 @@ void LCD_ClearScreen(void);
 
 void LCD_MoveCursor(unsigned char row, unsigned char column);
 
-void LCD_DisplayPressed(void);
-
 #endif //LCDdriver_H
