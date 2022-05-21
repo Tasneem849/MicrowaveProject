@@ -77,7 +77,7 @@ void LCD_Character(unsigned char character)
 
 void LCD_String(unsigned char *STR)       //Sends one character at a time to the LCD SendCharacter Function till the end of the string.
 {
-    while (*STR)       //As long as string is not terminated
+    while (*STR)                //As long as string is not terminated
     {
         LCD_Character(*STR);    //Calling the LCD SendCharacter Function once each loop iteration
 
@@ -93,10 +93,6 @@ void LCD_ClearScreen(void)
     LCD_Command(CLR_DisplayScreen);            //Clear the LCD's Display Screen
 
     Delay_OneMilliSec(10);                     //LCD Clear Screen Delay
-
-    LCD_Command(ReturnCursorHomePosition);     //Cursor at Home Position (Row1,Column1)
-
-    Delay_OneMilliSec(1);     //One Millisecond Delay
 }
 /**********************************************************************************/
 
