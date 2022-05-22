@@ -101,6 +101,97 @@ Bweight:	LCD_ClearScreen();
 }
 
 
+void CaseC(void)
+{
+unsigned char RETURN;
+int i;
+double time;
+Cweight:	LCD_ClearScreen();
+		LCD_String("Chicken Weight?");
+                Delay_OneSec(1);                     //delay 1 second
+                while(KEYPAD_READ() == 0xFF){}       //Read the input from the keybad while pressing on it
+		RETURN = KEYPAD_READ();
+		i = RETURN -'0';                     //converting from character to integer
+
+          if(i<=9&&i!=0&&i!=-13&&i!=-6)              //make sure that is valid number is pressed between 1 and 9   
+	{
+	        LCD_ClearScreen();
+                LCD_Character(RETURN);
+		Delay_OneMilliSec(200);              //delay 2 seconds
+		LCD_ClearScreen();
+                time = (RETURN -'0')* 0.2;           //calculate the needed time to cook the chicken
+                Countdown_doubletochar(time);
+		displaycount();
+		while(READ_PIN_VALUE('F' , 0)== 1);  //the count does not start untill the switch is pressed
+	}
+
+            if(RETURN == 'A'){
+
+                LCD_ClearScreen();
+                LCD_String("Err");
+                Delay_OneMilliSec(1000);   //delay 1 second
+                LCD_ClearScreen();
+		goto Cweight;             // Return to enter a valid Chicken Weight
+                             }
+	
+	    if(RETURN == 'B'){
+
+                LCD_ClearScreen();
+                LCD_String("Err");
+                Delay_OneMilliSec(1000);  //delay 1 second
+                LCD_ClearScreen();
+		goto Cweight;            // Return to enter a valid Chicken Weight
+                             }
+
+	    if(RETURN == 'C'){
+
+                LCD_ClearScreen();
+                LCD_String("Err");
+                Delay_OneMilliSec(1000);   //delay 1 second
+                LCD_ClearScreen();
+		goto Cweight;             // Return to enter a valid Chicken Weight
+	                      } 
+	
+	    if(RETURN == 'D'){
+
+                LCD_ClearScreen();
+                LCD_String("Err");
+                Delay_OneMilliSec(1000);   //delay 1 second
+                LCD_ClearScreen();
+		goto Cweight;             // Return to enter a valid Chicken Weight
+                            }
+
+            if(RETURN == '#'){
+
+                LCD_ClearScreen();
+                LCD_String("Err");
+                Delay_OneMilliSec(1000);   //delay 1 second
+                LCD_ClearScreen();
+		goto Cweight;             // Return to enter a valid Chicken Weight
+                             }
+
+	    if(RETURN == '*'){
+
+                LCD_ClearScreen();
+                LCD_String("Err");
+                Delay_OneMilliSec(1000);   //delay 1 second
+                LCD_ClearScreen();
+		goto Cweight;              // Return to enter a valid Chicken Weight
+                             }
+
+
+	    if(RETURN == '0'){
+
+                LCD_ClearScreen();
+                LCD_String("Err");
+                Delay_OneMilliSec(1000);     //delay 1 second
+                LCD_ClearScreen();
+		goto Cweight;                // Return to enter a valid Chicken Weight
+                             }
+	    while (READ_PIN_VALUE('F' , 0) == 1);   //the count does not start untill the switch is pressed
+						
+}
+
 void CaseD(void)
 {
 int s = 0;
