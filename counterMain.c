@@ -1,8 +1,3 @@
-#include "LCDdriver.h"
-#include "timerA.h" 
-#include "GPIO.h"
-#include "additionalFunctions.h"
-#include "led.h"
 #include "CountDown.h"
 // input is array of char arranged where minutes tenth is the first value then munites unitth then seconds tenth then seconds units 
 // example 0130 is 1 minute and 30 seconds
@@ -83,10 +78,10 @@ while (1)
 
 void Countdown_doubletochar(double Time)		//Convert double value to an array of characters
 {
-	unsigned char minutes_Tens;				//Variable to store the value of the integer part only in tens
+	unsigned char minutes_Tens;			//Variable to store the value of the integer part only in tens
 	unsigned char minutes_Units;			//Variable to store the value of the integer part only in units
-	int seconds;											//Variable to store the total value of the decimal part only (total seconds)
-	unsigned char	seconds_Tens;				//Variable to store the value of the decimal part only in tens
+	int seconds;					//Variable to store the total value of the decimal part only (total seconds)
+	unsigned char	seconds_Tens;			//Variable to store the value of the decimal part only in tens
 	unsigned char seconds_Units;			//Variable to store the value of the decimal part only in units
 	
 	minutes_Tens = (Time / 10);
