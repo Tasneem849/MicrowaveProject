@@ -1,5 +1,18 @@
 #include "Cases.h"
 
+void CaseA(void)
+{
+   LCD_ClearScreen();   //To make sure nothing found on the screen before starting
+   LCD_String("Popcorn"); 
+   Delay_OneSec(2);
+   LCD_ClearScreen();
+   countArray[0] = '0'; //Popcorn needs 1 minute 
+   countArray[1] = '1';
+   countArray[2] = '0';
+   countArray[3] = '0';
+   displaycount();
+   while(READ_PIN_VALUE('F', 0) == 1); //Start countdown after pressing the switch 
+}
 
 
 void CaseB(void)
