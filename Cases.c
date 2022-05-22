@@ -109,7 +109,7 @@ Dagain:	LCD_Command(ENTRY_MODE_3);   //Cursor Moves To the right one column whil
 	LCD_String("Cooking Time?");
 	Delay_OneSec(2);            //2 seconds delay
 	LCD_ClearScreen();
-	LCD_Command(ENTRY_MODE_4); //Cursor Moves To the left one column while display Stays in the same place/no movement
+	LCD_Command(ENTRY_MODE_4); //Cursor Stays in the same place/no movement whereas Display Moves to the left one column
 	LCD_MoveCursor(1,16);     //Cursor Moves at the end of the end of first row 
 
 	while(1)
