@@ -26,31 +26,33 @@ unsigned char KEYPAD_READ(void)
 	{
 			
 			unsigned char ARRAY [4][4] = {  {'1', '2', '3', 'A'}
-																		 ,{'4', '5', '6', 'B'}
-																		 ,{'7', '8', '9', 'C'}
-																		 ,{'*', '0', '#', 'D'} };
+						       ,{'4', '5', '6', 'B'}
+						       ,{'7', '8', '9', 'C'}
+						       ,{'*', '0', '#', 'D'} };
 			char ROW, J, COL;
 																		 
 			char RETURN_VAL = 0xFF;
 																		 
-			for (ROW = 0; ROW <= 3; ROW++)
+			for (ROW = 0; ROW <= 3; ROW++)   //check which row has the pressed button
 				{
 					WRITE_HIGH_NIPPLE(KEYPAD_ROWS, 0xFF);
 					WRITE_PIN_VALUE(KEYPAD_ROWS, ROW + 4, 0);
+				//(ROW+ 4) because the rows start with A4 to A7
 					
 
-					for (COL = 0; COL <= 3; COL++)
+					for (COL = 0; COL <= 3; COL++)   //check wich column in this row has the pressed button
 						{
 							J = READ_PIN_VALUE(KEYPAD_COLUMNS, COL + 4);
+						//(COL + 4) because the rows start with C4 to C7 
 							
 							if(J==0)
 							{
 								RETURN_VAL = ARRAY[ROW][COL];
-								return RETURN_VAL;
+								return RETURN_VAL;      //return which button is pressed
 							}
 						
 					       }
 				}
 				
-				return RETURN_VAL;
+				return RETURN_VAL;       //return 0xFF if no button is pressed
 	}
